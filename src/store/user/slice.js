@@ -26,6 +26,16 @@ export const userSlice = createSlice({
       // console.log("new array", newFavoritesArray)
       state.favorites = newFavoritesArray;
     },
+    loginSuccess: (state, action) => {
+      // console.log("action login", action);
+      state.token = action.payload.token;
+      state.profile = action.payload.profile;
+    },
+    logout: (state) => {
+      localStorage.removeItem("token");
+      state.profile = null;
+      state.token = null;
+    },
   },
 });
 

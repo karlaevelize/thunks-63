@@ -1,12 +1,21 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import PizzaList from "./pages/PizzaList";
 import PostsPage from "./pages/PostsPage";
 import PostDetails from "./pages/PostDetails";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";
+import { persistLogin } from "./store/user/thunks";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(persistLogin());
+  }, []);
+
   return (
     <div className="App">
       <Navbar />
